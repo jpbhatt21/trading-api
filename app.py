@@ -68,7 +68,7 @@ def place_order():
     while db.get_order_by_id(order_response['orderId']):
         order_response['orderId'] = str(uuid.uuid4())
     db.save_order(order_response)
-    return jsonify(order_response)
+    return jsonify(order_response), 201
 
 @app.route('/api/v1/orders/<orderId>',methods=['GET'])
 def get_order(orderId):
