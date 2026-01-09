@@ -57,7 +57,7 @@ def display_instruments(instruments):
     print("-" * 60)
     for idx, instrument in enumerate(instruments, 1):
         print(f"{idx:<5} {instrument['symbol']:<15} {instrument['exchange']:<10} "
-              f"{instrument['instrumentType']:<12} ₹{instrument['lastTradedPrice']:>10.2f}")
+              f"{instrument['instrumentType']:<12} {"₹"+f'{instrument['lastTradedPrice']:.2f}':>12}")
 
 def display_portfolio(portfolio):
     print_header("YOUR PORTFOLIO")
@@ -71,9 +71,9 @@ def display_portfolio(portfolio):
     for holding in portfolio:
         total_value += holding['currentValue']
         print(f"{holding['symbol']:<15} {holding['quantity']:<12.2f} "
-              f"₹{holding['averagePrice']:>10.2f} ₹{holding['currentValue']:>13.2f}")
+              f"{"₹"+f'{holding['averagePrice']:.2f}' :>12} {"₹"+f'{holding['currentValue']:.2f}':>15}")
     print("-" * 70)
-    print(f"{'Total Portfolio Value:':<42} ₹{total_value:>13.2f}")
+    print(f"{'Total Portfolio Value:':<42} {"₹"+f'{total_value:.2f}':>14}")
 
 def display_trades(trades):
     print_header("YOUR TRADES")
@@ -85,7 +85,7 @@ def display_trades(trades):
     print("-" * 100)
     for trade in trades:
         print(f"{trade['orderId']:<38} {trade['symbol']:<12} {trade['type']:<6} "
-              f"{trade['style']:<8} {trade['quantity']:<8.2f} ₹{trade['price']:>8.2f} {trade['status']:<10}")
+              f"{trade['style']:<8} {trade['quantity']:<8.2f} {"₹"+f'{trade['price']:.2f}':>12} {trade['status']:<10}")
 
 def place_order():
     print_header("PLACE ORDER")
